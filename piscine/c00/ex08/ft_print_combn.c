@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:09:31 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/07 11:19:10 by jorvarea         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:23:19 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,9 @@ void	ft_gen_new_comb(int digits[10], int n)
 void	ft_print_combn(int n)
 {
 	int		digits[10];
-	char	digit;
 
 	ft_set_initial_values(digits, n);
-	while (digits[0] <= (9 - n + 1))
+	while (digits[0] <= (9 - (n - 1)))
 	{
 		ft_show_current_comb(digits, n);
 		ft_gen_new_comb(digits, n);
@@ -82,6 +81,6 @@ int	main(void)
 	int	n;
 
 	n = 2;
-	ft_print_combn(2);
+	ft_print_combn(n);
 	return (0);
 }

@@ -1,8 +1,6 @@
 #include <string.h>
 #include <stdio.h>
 
-char	*ft_strcat(char *dest, char *src);
-
 int main()
 {
     char    dest1[100] = "buenos dias";

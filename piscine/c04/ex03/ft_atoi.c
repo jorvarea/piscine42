@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 13:30:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/19 11:05:59 by jorvarea         ###   ########.fr       */
+/*   Created: 2023/07/20 12:29:38 by jorvarea          #+#    #+#             */
+/*   Updated: 2023/07/20 18:01:36 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+int ft_atoi(char *str)
 {
-	long int	i;
+    int i;
+    int sign;
+    int is_num;
 
-	i = 10000000000;
-	if (nb == 0)
-	{
-		write(1, "0", 1);
-		return ;
-	}
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		nb = -nb;
-	}
-	while (i > nb)
-		i = i / 10;
-	while (i >= 1)
-	{
-		write(1, &"0123456789"[(nb / i) % 10], 1);
-		i = i / 10;
-	}
+    is_num = 0;
+    sign = 1;
+    i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] == '-')
+            sign *= -1;
+        if (str[i] >= '0' && str[i] <= '9')
+            is_num = 1;
+        i++;
+    }
 }

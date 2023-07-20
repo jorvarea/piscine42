@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 13:30:11 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/19 11:05:59 by jorvarea         ###   ########.fr       */
+/*   Created: 2023/07/20 11:46:46 by jorvarea          #+#    #+#             */
+/*   Updated: 2023/07/20 12:12:17 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr(int nb)
+void	ft_putstr(char *str)
 {
-	long int	i;
+	int	i;
 
-	i = 10000000000;
-	if (nb == 0)
-	{
-		write(1, "0", 1);
-		return ;
-	}
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		nb = -nb;
-	}
-	while (i > nb)
-		i = i / 10;
-	while (i >= 1)
-	{
-		write(1, &"0123456789"[(nb / i) % 10], 1);
-		i = i / 10;
-	}
+	i = -1;
+	while (str[++i])
+		write(1, &str[i], 1);
 }
