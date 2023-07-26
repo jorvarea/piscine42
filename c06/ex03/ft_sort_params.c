@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 22:21:51 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/24 13:59:53 by jorvarea         ###   ########.fr       */
+/*   Updated: 2023/07/26 20:29:16 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,11 @@ void	ft_sort_str_tab(char **tab, int size)
 int	main(int argc, char **argv)
 {
 	int		i;
-	char	*parametros[20];
+	char	*parametros[100];
 
+	i = 0;
+	while (i < 100)
+		parametros[i++] = NULL;
 	i = 1;
 	while (i < argc)
 	{

@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   my_basic_functions2.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 12:21:24 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/26 12:16:01 by jorvarea         ###   ########.fr       */
+/*   Created: 2023/07/26 21:40:41 by jorvarea          #+#    #+#             */
+/*   Updated: 2023/07/26 22:12:46 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
+#ifndef MY_BASIC_FUNCTIONS2_H
+# define MY_BASIC_FUNCTIONS2_H
+# include "my_basic_functions.h"
+# include <stdlib.h>
 
-int	ft_sqrt(int nb)
-{
-	int	n;
-	int	half_nb;
+int	check_char(t_map *map, char ch);
+int	map_error(void);
+int	get_number_rows_and_empty_char(int file, t_map *map, int *count);
 
-	if (nb <= 0)
-		return (0);
-	else if (nb == 1)
-		return (1);
-	half_nb = nb / 2;
-	n = 1;
-	while (n <= half_nb)
-	{
-		if (n * n == nb)
-			return (n);
-		n++;
-	}
-	return (0);
-}
-
-/*int	main(void)
-{
-	int	num;
-
-	num = ft_sqrt(INT_MAX);
-	printf("%d\n", num);
-}*/
+#endif

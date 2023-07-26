@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   my_lib2.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: svaccaro <svaccaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 22:08:54 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/26 20:23:57 by jorvarea         ###   ########.fr       */
+/*   Created: 2023/07/26 18:35:40 by svaccaro          #+#    #+#             */
+/*   Updated: 2023/07/26 22:59:56 by svaccaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef MY_LIB2_H
+# define MY_LIB2_H
 
-void	ft_putstr(char *str)
-{
-	int	i;
+# include "my_basic_functions.h"
+# include "my_lib.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
+void	print_map(t_map map);
+t_pos	*get_obstacle_pos(t_map *map);
+int get_biggest_size();
+void	find_biggest_square(t_map *map);
 
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	write(1, "\n", 1);
-	return (0);
-}
+#endif /* MY_LIB2_H */

@@ -6,7 +6,7 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:32:59 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/24 17:31:21 by jorvarea         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:31:33 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void	ft_putnbr_base(int nbr, char *base)
 	int		nbr;
 	char	*base;
 
-	base = "\v0123456789abcdef";
+	base = "0123456789abcdef";
 	nbr = 42;
 	ft_putnbr_base(nbr, base);
 }*/
