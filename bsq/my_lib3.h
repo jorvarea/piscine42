@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_basic_functions2.h                              :+:      :+:    :+:   */
+/*   my_lib3.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 21:40:41 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/27 10:52:41 by jorvarea         ###   ########.fr       */
+/*   Created: 2023/07/27 14:30:46 by jorvarea          #+#    #+#             */
+/*   Updated: 2023/07/27 14:31:27 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_BASIC_FUNCTIONS2_H
-# define MY_BASIC_FUNCTIONS2_H
+#ifndef MY_LIB3_H
+# define MY_LIB3_H
+
 # include "my_basic_functions.h"
-# include <stdlib.h>
+# include "my_basic_functions2.h"
+# include "my_basic_functions3.h"
+# include "my_lib.h"
+# include "my_lib2.h"
 
-int		check_char(t_map *map, char ch);
-int		map_error(void);
-int		get_number_rows_and_empty_char(int file, t_map *map, int *count);
-void	ft_swap(int *a, int *b);
-void	ft_sort_int_tab(int *tab, int size);
+int		get_biggest_size(t_map *map);
+void	find_biggest_square(t_map *map);
 
-#endif
+#endif /* MY_LIB2_H */

@@ -6,11 +6,33 @@
 /*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:35:08 by jorvarea          #+#    #+#             */
-/*   Updated: 2023/07/25 14:31:50 by jorvarea         ###   ########.fr       */
+/*   Updated: 2023/07/27 23:17:16 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+
+int	is_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r')
+		return (1);
+	return (0);
+}
+
+int	ft_char2digit(char c, char *base)
+{
+	int	i;
+
+	i = 0;
+	while (base[i] != '\0')
+	{
+		if (base[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
 
 int	valid_base(char *base, int base_number)
 {
@@ -30,8 +52,7 @@ int	valid_base(char *base, int base_number)
 			else if (base[i] == '-' || base[i] == '+' || base[j] == '-'
 				|| base[j] == '+')
 				return (0);
-			else if (!(base[i] > 31 && base[i] < 127 && base[j] > 31
-					&& base[j] < 127))
+			else if (is_space(base[i]) || is_space(base[j]))
 				return (0);
 			j++;
 		}
@@ -40,88 +61,53 @@ int	valid_base(char *base, int base_number)
 	return (1);
 }
 
-int	ft_char2digit(char c, char *base)
+int	ft_handle_spaces(char *str, int i, int *sign)
 {
-	int	i;
-
-	i = 0;
-	while (base[i] != '\0')
-	{
-		if (base[i] == c)
-			return (i);
+	while (is_space(str[i]))
 		i++;
-	}
-	return (-1);
-}
-
-void	ft_atoi_str(char *str, char *number, char *base)
-{
-	int	i;
-	int	j;
-	int	digit;
-
-	i = 0;
-	j = 1;
-	number[0] = '+';
-	while (str[i] != '\0')
-	{
-		while (str[i] == ' ')
-			i++;
-		if (str[i] == '-' && number[0] != '-')
-			number[0] = '-';
-		else if (str[i] == '-' && number[0] == '-')
-			number[0] = '+';
-		digit = ft_char2digit(str[i], base);
-		if (digit != -1)
-		{
-			number[j] = digit + '0';
-			j++;
-		}
-		if (j > 0)
-			number[j] = '\0';
-		i++;
-	}
-}
-
-int	ft_number2dec(char *number, int base_number)
-{
-	int	sign;
-	int	i;
-	int	num;
-	int	k;
-
-	if (number[0] == '+')
-		sign = 1;
-	else
-		sign = -1;
-	i = 0;
-	while (number[i] != '\0')
-		i++;
-	num = 0;
-	k = 1;
-	i = i - 1;
-	while (i > 0)
-	{
-		num = num + (number[i] - '0') * k;
-		k *= base_number;
-		i--;
-	}
-	return (num * sign);
+	while (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			*sign *= -1;
+	return (i);
 }
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int		base_number;
-	int		i;
-	char	number[30];
+	int	i;
+	int	base_number;
+	int	sign;
+	int	digit;
+	int	num;
 
 	i = 0;
 	while (base[i] != '\0')
 		i++;
 	base_number = i;
-	ft_atoi_str(str, number, base);
-	if (valid_base(base, base_number) == 1)
-		return (ft_number2dec(number, base_number));
+	if (valid_base(base, base_number))
+	{
+		sign = 1;
+		num = 0;
+		i = 0;
+		while (str[i] != '\0')
+		{
+			i = ft_handle_spaces(str, i, &sign);
+			while (str[i] && !is_space(str[i]) && str[i] != '-'
+				&& str[i] != '+')
+			{
+				digit = ft_char2digit(str[i++], base);
+				if (digit != -1)
+					num = num * base_number + digit;
+				else
+					return (0);
+			}
+			if (num != 0)
+				return (num * sign);
+			else
+				return (0);
+			i++;
+		}
+		return (num * sign);
+	}
 	else
 		return (0);
 }
@@ -133,7 +119,7 @@ int	ft_atoi_base(char *str, char *base)
 	char	*base;
 
 	base = "0123456789abcdef";
-	str = " \f-80000000";
+	str = "   --------+- 2a";
 	num = ft_atoi_base(str, base);
 	printf("%d\n", num);
 	return (0);

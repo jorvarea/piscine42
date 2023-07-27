@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svaccaro <svaccaro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jorvarea <jorvarea@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:27:32 by svaccaro          #+#    #+#             */
-/*   Updated: 2023/07/26 23:15:04 by svaccaro         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:40:36 by jorvarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_lib2.h"
+#include "my_lib3.h"
 
 int	check_and_solve_map(char *filename)
 {
@@ -31,7 +31,7 @@ int	check_and_solve_map(char *filename)
 		}
 		if (get_map(filename, &map))
 		{
-			// solve_map(map);
+			find_biggest_square(&map);
 			print_map(map);
 		}
 		while (i > 0)
@@ -47,11 +47,6 @@ int	main(int argc, char *argv[])
 	int		i;
 	t_map	map;
 
-	// if (argc == 1)
-	// {
-	// 	read_from_terminal();
-	// 	++argc;
-	// }
 	if (argc > 1)
 	{
 		i = 1;
@@ -64,5 +59,5 @@ int	main(int argc, char *argv[])
 			i++;
 		}
 	}
-	return 0;
+	return (0);
 }
